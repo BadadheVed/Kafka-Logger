@@ -1,6 +1,6 @@
-import { kafka } from "./client.js";
+import { kafka } from "./kafka.js";
 
-const init = async (contains) => {
+export const consumers = async () => {
   const consumer = kafka.consumer({ groupId: "users-1" }); // add the gropuname in which you want to assign the user
   console.log("Connection The Consumer");
   await consumer.connect();
@@ -16,3 +16,5 @@ const init = async (contains) => {
     },
   });
 };
+
+consumers();

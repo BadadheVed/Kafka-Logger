@@ -1,6 +1,6 @@
-import { kafka } from "./client.js";
+import { kafka } from "./kafka.js";
 
-export const init = async (contains) => {
+export const producers = async (contains) => {
   const producer = kafka.producer();
   console.log("Connecting Producer .. ");
   await producer.connect();
@@ -11,9 +11,7 @@ export const init = async (contains) => {
         topic: "existing-user",
         messages: [
           {
-            partition: 1,
-            key: "check-update",
-            value: JSON.stringify({ name: "Ayush Khairnar" }),
+            value: JSON.stringify({ name: "Ayush Khairnar existing" }),
           },
         ],
       })
@@ -21,7 +19,7 @@ export const init = async (contains) => {
         topic: "new-user",
         messages: [
           {
-            value: JSON.stringify({ name: "Ayush Khairnar" }),
+            value: JSON.stringify({ name: "Ayush Khairnar new" }),
           },
         ],
       });
